@@ -51,10 +51,10 @@ export default function Phone3D() {
             transformStyle: 'preserve-3d',
           }}
         >
-          <motion.div className="phone-3d-frame" style={{ transform: 'translateZ(40px)' }}>
+          <div className="phone-3d-frame" style={{ transform: 'translateZ(40px)' }}>
             <img src={heroImg} alt="Màn hình Locket Gold đã kích hoạt" />
             <span className="phone-3d-badge">Gold đã kích hoạt</span>
-          </motion.div>
+          </div>
           <div className="phone-3d-shadow" style={{ transform: 'rotateX(90deg) translateZ(-20px)' }} />
         </motion.div>
       </motion.div>
