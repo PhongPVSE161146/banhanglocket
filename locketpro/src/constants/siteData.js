@@ -5,17 +5,15 @@ import gallery04 from '../assets/gallery/04-custom-icons.png'
 import gallery05 from '../assets/gallery/05-unlimited-photos.png'
 import gallery06 from '../assets/gallery/06-widget.png'
 
-export const BRAND_NAME = 'Locket Gold Pon Pon'
+export {
+  UPGRADE_CONTACT,
+  BANK_DETAILS,
+  PAYMENT_CONFIG,
+  PRICING_PLANS_PERSONAL,
+  PRICING_PLANS_GROUP,
+} from 'fixlocketgold'
 
-/** Liên hệ TikTok — chỉnh username TikTok admin tại đây */
-export const UPGRADE_CONTACT = {
-  label: 'Nâng cấp trực tiếp qua UserName',
-  hint: 'Nhập UserName Locket, nhấn nút bên dưới — tin nhắn sao chép và mở TikTok để gửi admin.',
-  tiktok: 'https://www.tiktok.com/@locketgoldfree1',
-  tiktokDisplay: '@locketgoldfree1',
-  ctaTiktok: 'Gửi tin nhắn qua TikTok',
-  note: 'Không thanh toán trên web. Trao đổi & chuyển khoản qua TikTok với admin.',
-}
+export const BRAND_NAME = 'Locket Gold Pon Pon'
 
 /** Nhạc nền — đặt file MP3 tại public/audio/hieu-thu-hai-nguoi-im-lang.mp3 */
 export const BACKGROUND_MUSIC = {
@@ -163,76 +161,6 @@ export const TESTIMONIALS = [
   },
 ]
 
-/** Cấu hình Ngân Hàng nhận thanh toán VietQR */
-export const BANK_DETAILS = {
-  bankId: 'MB', // MB Bank
-  accountNo: '03741161146', // Số tài khoản admin
-  accountName: 'PHAM VAN PHONG', // Chủ tài khoản
-  notePrefix: 'LKT', // Mã tiền tố chuyển khoản (ví dụ: LKT15, LKT120...)
-}
-
-/** Bảng giá theo dịch vụ nâng cấp trực tiếp */
-export const PRICING_PLANS_PERSONAL = [
-  {
-    id: 'trai_nghiem',
-    badge: 'GÓI TRẢI NGHIỆM',
-    price: '15.000',
-    priceNum: 15000,
-    unit: 'đ',
-    period: '/ 30 Ngày',
-    desc: 'Lên UserName',
-    features: ['Lên trực tiếp bằng UserName', 'Không đụng iCloud máy', 'Kích hoạt cực nhanh'],
-  },
-  {
-    id: 'mot_nam',
-    badge: 'GÓI 1 NĂM',
-    price: '120.000',
-    priceNum: 120000,
-    unit: 'đ',
-    period: '/ Năm',
-    desc: 'Lên UserName',
-    popular: true,
-    features: ['Lên trực tiếp bằng UserName', 'Tiết kiệm chi phí', 'Bảo hành suốt quá trình sử dụng'],
-  },
-]
-
-export const PRICING_PLANS_GROUP = [
-  {
-    id: 'cap_doi',
-    badge: 'GÓI CẶP ĐÔI',
-    price: '202.000',
-    priceNum: 202000,
-    unit: 'đ',
-    period: '/ Năm',
-    desc: 'Dành cho 2 tài khoản',
-    icon: 'couple',
-    features: ['Nâng cấp cho 2 tài khoản', 'Dành riêng cho các cặp đôi', 'Hoạt động độc lập, ổn định'],
-  },
-  {
-    id: 'gia_dinh',
-    badge: 'GÓI GIA ĐÌNH',
-    price: '280.000',
-    priceNum: 280000,
-    unit: 'đ',
-    period: '/ Năm',
-    desc: 'Tối đa 3 thành viên',
-    icon: 'family',
-    features: ['Nâng cấp cho 3 tài khoản', 'Tối ưu chi phí gia đình', 'Bảo hành đầy đủ'],
-  },
-  {
-    id: 'sieu_cap',
-    badge: 'GÓI SIÊU CẤP',
-    price: '450.000',
-    priceNum: 450000,
-    unit: 'đ',
-    period: '/ Năm',
-    desc: 'Dành cho 5 thành viên',
-    icon: 'crown',
-    features: ['Nâng cấp cho 5 tài khoản', 'Tiết kiệm chi phí tối đa', 'Hỗ trợ kỹ thuật 24/7'],
-  },
-]
-
-
 export const PRICING_COMMITMENT = {
   title: 'Cam kết "Nói 3 Không"!',
   items: [
@@ -246,7 +174,7 @@ export const PRICING_COMMITMENT = {
 export const PRICING_HEADER = {
   title: 'Bảng Giá Dịch Vụ',
   subtitle: 'Nâng Cấp Locket Gold',
-  tagline: 'Lên trực tiếp bằng UserName — xem giá minh bạch, không thanh toán trên web',
+  tagline: 'Lên trực tiếp bằng UserName — thanh toán MoMo/VietQR nhanh chóng',
 }
 
 export const CTA_BANNER = {
@@ -310,11 +238,11 @@ export const GALLERY_ITEMS = [
 export const SUPPORT_FAQ = [
   {
     q: 'Nâng cấp qua UserName là gì?',
-    a: 'Bạn gửi tên đăng nhập Locket cho admin. Admin lên Gold trực tiếp trên tài khoản — không cần thanh toán qua website.',
+    a: 'Bạn nhập UserName Locket trên web, quét mã QR MoMo/VietQR để thanh toán. Admin lên Gold trực tiếp trên tài khoản của bạn.',
   },
   {
     q: 'Tôi thanh toán ở đâu?',
-    a: 'Thanh toán qua chuyển khoản sau khi trao đổi với admin trên TikTok. Website chỉ hiển thị bảng giá để bạn tham khảo.',
+    a: 'Thanh toán bằng MoMo, app ngân hàng hoặc VietQR/Napas 247 ngay trên website sau khi chọn gói. Có thể báo admin qua TikTok để được kích hoạt nhanh hơn.',
   },
   {
     q: 'Gói linh hoạt năm tính phí thế nào?',

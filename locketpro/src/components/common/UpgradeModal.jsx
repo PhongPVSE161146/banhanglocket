@@ -1,11 +1,17 @@
 import { useState, useEffect } from 'react'
-import { Modal, Input, Button, Typography, message, Steps, Spin } from 'antd'
+import { Modal, Input, Button, message, Steps, Spin } from 'antd'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import SendIcon from '@mui/icons-material/Send'
-import { BANK_DETAILS, UPGRADE_CONTACT } from '../../constants/siteData'
+import {
+  PAYMENT_CONFIG,
+  buildVietQrUrl,
+  buildTransferMemo,
+  openTiktokContact,
+  verifyPayment,
+} from 'fixlocketgold'
 
 export default function UpgradeModal({ open, onClose, selectedPlan }) {
   const [step, setStep] = useState(0)
@@ -24,15 +30,16 @@ export default function UpgradeModal({ open, onClose, selectedPlan }) {
 
   if (!selectedPlan) return null
 
-  const cleanUsername = username.trim().replace(/^@/, '')
-  const memoText = `${BANK_DETAILS.notePrefix}${selectedPlan.priceNum}_${cleanUsername}`
+  const memoText = buildTransferMemo({
+    priceNum: selectedPlan.priceNum,
+    username,
+  })
 
   const copyToClipboard = (text, label) => {
     if (navigator.clipboard?.writeText) {
       navigator.clipboard.writeText(text)
       message.success(`Đã sao chép ${label}!`)
     } else {
-      // Fallback
       const el = document.createElement('textarea')
       el.value = text
       document.body.appendChild(el)
@@ -52,25 +59,27 @@ export default function UpgradeModal({ open, onClose, selectedPlan }) {
   }
 
   const handleVerifyPayment = () => {
-    setIsVerifying(true)
-    // Giả lập kiểm tra giao dịch 3 giây
-    setTimeout(() => {
-      setIsVerifying(false)
-      setIsSuccess(true)
-      message.success('Hệ thống ghi nhận yêu cầu nâng cấp!')
-    }, 3000)
+    verifyPayment({
+      onStart: () => setIsVerifying(true),
+      onComplete: () => {
+        setIsVerifying(false)
+        setIsSuccess(true)
+        message.success('Hệ thống ghi nhận yêu cầu nâng cấp!')
+      },
+    })
   }
 
   const handleTiktokContact = () => {
-    const text = `Mình vừa thanh toán gói ${selectedPlan.badge} cho UserName Locket: ${username.trim()}. Nhờ admin kiểm tra và kích hoạt giúp mình nhé!`
-    if (navigator.clipboard?.writeText) {
-      navigator.clipboard.writeText(text)
-    }
-    window.open(UPGRADE_CONTACT.tiktok, '_blank', 'noopener,noreferrer')
+    openTiktokContact({
+      planBadge: selectedPlan.badge,
+      username,
+    })
   }
 
-  // VietQR Image URL
-  const qrUrl = `https://img.vietqr.io/image/${BANK_DETAILS.bankId}-${BANK_DETAILS.accountNo}-compact2.png?amount=${selectedPlan.priceNum}&addInfo=${encodeURIComponent(memoText)}&accountName=${encodeURIComponent(BANK_DETAILS.accountName)}`
+  const qrUrl = buildVietQrUrl({
+    amount: selectedPlan.priceNum,
+    memo: memoText,
+  })
 
   return (
     <Modal
@@ -90,7 +99,6 @@ export default function UpgradeModal({ open, onClose, selectedPlan }) {
       maskClosable={!isVerifying}
     >
       <div className="upgrade-modal-body">
-        {/* Thanh tiến trình */}
         <Steps
           current={isSuccess ? 2 : step}
           size="small"
@@ -102,7 +110,6 @@ export default function UpgradeModal({ open, onClose, selectedPlan }) {
           ]}
         />
 
-        {/* BƯỚC 1: NHẬP USERNAME */}
         {step === 0 && !isSuccess && (
           <div className="checkout-step-1">
             <p className="checkout-instruction">
@@ -144,7 +151,6 @@ export default function UpgradeModal({ open, onClose, selectedPlan }) {
           </div>
         )}
 
-        {/* BƯỚC 2: THANH TOÁN QR */}
         {step === 1 && !isSuccess && (
           <div className="checkout-step-2">
             {isVerifying ? (
@@ -156,7 +162,7 @@ export default function UpgradeModal({ open, onClose, selectedPlan }) {
             ) : (
               <>
                 <p className="qr-guide-text">
-                  Quét mã QR dưới đây bằng <strong>ứng dụng ngân hàng (Mobile Banking)</strong> để tự động điền thông tin và thanh toán.
+                  Quét mã QR bằng <strong>MoMo</strong>, <strong>app ngân hàng</strong> hoặc <strong>VietQR/Napas 247</strong> để thanh toán.
                 </p>
 
                 <div className="qr-container-box">
@@ -166,18 +172,18 @@ export default function UpgradeModal({ open, onClose, selectedPlan }) {
 
                 <div className="bank-details-box">
                   <div className="detail-item">
-                    <span className="detail-label">Ngân hàng</span>
-                    <span className="detail-value">{BANK_DETAILS.bankId} (Quân Đội)</span>
+                    <span className="detail-label">Phương thức</span>
+                    <span className="detail-value">{PAYMENT_CONFIG.bankLabel}</span>
                   </div>
 
                   <div className="detail-item">
-                    <span className="detail-label">Số tài khoản</span>
+                    <span className="detail-label">Số tài khoản / Ví</span>
                     <div className="value-with-copy">
-                      <span className="detail-value highlighted">{BANK_DETAILS.accountNo}</span>
+                      <span className="detail-value highlighted">{PAYMENT_CONFIG.accountNo}</span>
                       <button
                         type="button"
                         className="btn-copy-small"
-                        onClick={() => copyToClipboard(BANK_DETAILS.accountNo, 'Số tài khoản')}
+                        onClick={() => copyToClipboard(PAYMENT_CONFIG.accountNo, 'Số tài khoản')}
                       >
                         <ContentCopyIcon style={{ fontSize: 13 }} />
                       </button>
@@ -186,7 +192,7 @@ export default function UpgradeModal({ open, onClose, selectedPlan }) {
 
                   <div className="detail-item">
                     <span className="detail-label">Chủ tài khoản</span>
-                    <span className="detail-value">{BANK_DETAILS.accountName}</span>
+                    <span className="detail-value">{PAYMENT_CONFIG.accountNameDisplay}</span>
                   </div>
 
                   <div className="detail-item">
@@ -239,7 +245,6 @@ export default function UpgradeModal({ open, onClose, selectedPlan }) {
           </div>
         )}
 
-        {/* BƯỚC 3: HOÀN TẤT THÀNH CÔNG */}
         {isSuccess && (
           <div className="checkout-step-success">
             <div className="success-icon-wrapper">
@@ -247,7 +252,7 @@ export default function UpgradeModal({ open, onClose, selectedPlan }) {
             </div>
 
             <h4 className="success-title">Thanh toán hoàn tất!</h4>
-            
+
             <p className="success-desc">
               Hệ thống đã tiếp nhận yêu cầu nâng cấp gói <strong>{selectedPlan.badge}</strong> cho UserName Locket <strong>@{username.trim()}</strong>.
             </p>
@@ -282,4 +287,3 @@ export default function UpgradeModal({ open, onClose, selectedPlan }) {
     </Modal>
   )
 }
-

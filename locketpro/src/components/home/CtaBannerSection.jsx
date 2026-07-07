@@ -4,7 +4,10 @@ import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import { CTA_BANNER } from '../../constants/siteData'
+import { PRICING_PLANS_PERSONAL } from 'fixlocketgold'
 import UpgradeModal from '../common/UpgradeModal'
+
+const defaultPlan = PRICING_PLANS_PERSONAL.find((plan) => plan.popular) ?? PRICING_PLANS_PERSONAL[0]
 
 export default function CtaBannerSection() {
   const [open, setOpen] = useState(false)
@@ -40,7 +43,7 @@ export default function CtaBannerSection() {
           </Button>
         </div>
       </Container>
-      <UpgradeModal open={open} onClose={() => setOpen(false)} />
+      <UpgradeModal open={open} onClose={() => setOpen(false)} selectedPlan={defaultPlan} />
     </Box>
   )
 }
