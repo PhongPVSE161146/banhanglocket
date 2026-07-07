@@ -3,6 +3,7 @@ export const PRICING_PLANS_PERSONAL = [
   {
     id: 'trai_nghiem',
     badge: 'GÓI TRẢI NGHIỆM',
+    planType: 'month',
     price: '15.000',
     priceNum: 15000,
     unit: 'đ',
@@ -13,6 +14,7 @@ export const PRICING_PLANS_PERSONAL = [
   {
     id: 'mot_nam',
     badge: 'GÓI 1 NĂM',
+    planType: 'year',
     price: '120.000',
     priceNum: 120000,
     unit: 'đ',
@@ -27,6 +29,7 @@ export const PRICING_PLANS_GROUP = [
   {
     id: 'cap_doi',
     badge: 'GÓI CẶP ĐÔI',
+    planType: 'year',
     price: '202.000',
     priceNum: 202000,
     unit: 'đ',
@@ -38,6 +41,7 @@ export const PRICING_PLANS_GROUP = [
   {
     id: 'gia_dinh',
     badge: 'GÓI GIA ĐÌNH',
+    planType: 'year',
     price: '280.000',
     priceNum: 280000,
     unit: 'đ',
@@ -49,6 +53,7 @@ export const PRICING_PLANS_GROUP = [
   {
     id: 'sieu_cap',
     badge: 'GÓI SIÊU CẤP',
+    planType: 'year',
     price: '450.000',
     priceNum: 450000,
     unit: 'đ',

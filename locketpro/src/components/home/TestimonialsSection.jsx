@@ -9,7 +9,7 @@ export default function TestimonialsSection() {
       <Container maxWidth="lg">
         <SectionHeading
           title="Người Dùng Nói Gì"
-          subtitle="Hơn 5.000+ khách hàng đã nâng cấp Gold qua TikTok — kéo chuột vào để tạm dừng"
+          subtitle="Hơn 5.000+ khách hàng đã nâng cấp Gold — kéo chuột vào để tạm dừng"
         />
       </Container>
       <TestimonialsMarquee />

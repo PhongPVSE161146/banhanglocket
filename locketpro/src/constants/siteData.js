@@ -34,7 +34,7 @@ export const HERO = {
   badge: '✨ Nâng cấp trực tiếp — không qua cổng thanh toán',
   title: 'Nâng Tầm Locket Của Bạn',
   subtitle:
-    'Xem bảng giá minh bạch, chọn gói phù hợp và gửi UserName — admin lên Locket Gold trực tiếp trên tài khoản của bạn.',
+    'Xem bảng giá minh bạch, chọn gói phù hợp, thanh toán MoMo — hệ thống lên Locket Gold tự động.',
   ctaPrimary: 'Xem bảng giá',
   ctaSecondary: 'Xem thư viện',
   highlights: ['Lên Gold trực tiếp', 'Không đụng iCloud', 'Ổn định suốt quá trình'],
@@ -44,7 +44,7 @@ export const STATS = [
   { value: '5K+', label: 'Khách đã nâng cấp' },
   { value: '100%', label: 'Lên trực tiếp UserName' },
   { value: '4.9★', label: 'Đánh giá dịch vụ' },
-  { value: '24/7', label: 'Hỗ trợ TikTok' },
+  { value: '24/7', label: 'Tự động 24/7' },
 ]
 
 export const FEATURES = [
@@ -89,12 +89,12 @@ export const HOW_IT_WORKS = [
   {
     step: '02',
     title: 'Gửi UserName',
-    desc: 'Nhấn "Nâng cấp qua UserName" — gửi tin nhắn qua TikTok kèm UserName Locket.',
+    desc: 'Nhấn "Mua ngay", nhập UserName Locket và chuyển khoản MoMo qua QR.',
   },
   {
     step: '03',
-    title: 'Nhận Gold trực tiếp',
-    desc: 'Admin lên Gold trên tài khoản — màn hình hiển thị "Locket Gold đã kích hoạt".',
+    title: 'Nhận Gold tự động',
+    desc: 'Xác nhận thanh toán — hệ thống lên Gold trực tiếp, màn hình hiển thị "Locket Gold đã kích hoạt".',
   },
 ]
 
@@ -102,7 +102,7 @@ export const TESTIMONIALS = [
   {
     name: 'Minh Anh',
     role: 'Sinh viên · Hà Nội',
-    text: 'Gửi UserName xong vài phút là lên Gold, nhắn TikTok admin rất nhanh.',
+    text: 'Thanh toán QR xong vài phút là lên Gold, không cần chờ admin.',
     stars: 5,
   },
   {
@@ -126,7 +126,7 @@ export const TESTIMONIALS = [
   {
     name: 'Thu Hà',
     role: 'Nội trợ · Hải Phòng',
-    text: 'Con gái hướng dẫn gửi UserName qua TikTok, 10 phút sau là Gold rồi.',
+    text: 'Chỉ cần nhập UserName và quét QR MoMo, 10 phút sau là Gold rồi.',
     stars: 5,
   },
   {
@@ -156,7 +156,7 @@ export const TESTIMONIALS = [
   {
     name: 'Văn Hùng',
     role: 'Freelancer · Đà Lạt',
-    text: 'Admin phản hồi TikTok nhanh, có vấn đề hỏi là được giải đáp ngay.',
+    text: 'Hệ thống tự động, có vấn đề xem FAQ trang hỗ trợ là rõ ngay.',
     stars: 5,
   },
 ]
@@ -174,20 +174,20 @@ export const PRICING_COMMITMENT = {
 export const PRICING_HEADER = {
   title: 'Bảng Giá Dịch Vụ',
   subtitle: 'Nâng Cấp Locket Gold',
-  tagline: 'Lên trực tiếp bằng UserName — thanh toán MoMo/VietQR nhanh chóng',
+  tagline: 'Lên trực tiếp bằng UserName — thanh toán MoMo qua VietQR',
 }
 
 export const CTA_BANNER = {
   title: 'Sẵn sàng nâng cấp Locket Gold?',
-  subtitle: 'Chọn gói, gửi UserName — admin lên Gold trực tiếp cho bạn.',
-  button: 'Gửi tin nhắn qua TikTok',
+  subtitle: 'Chọn gói, thanh toán MoMo — lên Gold tự động trong vài phút.',
+  button: 'Nâng cấp ngay',
 }
 
 export const FOOTER_LINKS = [
   { label: 'Chính sách bảo mật', path: '/support' },
   { label: 'Điều khoản dịch vụ', path: '/support' },
   { label: 'Cam kết dịch vụ', path: '/pricing' },
-  { label: 'Nhắn TikTok', path: 'https://www.tiktok.com/@locketgoldfree1', external: true },
+  { label: 'Bảng giá', path: '/pricing' },
 ]
 
 export const GALLERY_ITEMS = [
@@ -195,7 +195,7 @@ export const GALLERY_ITEMS = [
     id: 1,
     step: 'Bước 1',
     title: 'Màn hình Gold đã kích hoạt',
-    desc: 'Sau khi admin lên Gold, app hiển thị huy hiệu và giao diện vàng cao cấp.',
+    desc: 'Sau khi thanh toán, hệ thống lên Gold — app hiển thị huy hiệu và giao diện vàng cao cấp.',
     image: gallery01,
   },
   {
@@ -238,11 +238,11 @@ export const GALLERY_ITEMS = [
 export const SUPPORT_FAQ = [
   {
     q: 'Nâng cấp qua UserName là gì?',
-    a: 'Bạn nhập UserName Locket trên web, quét mã QR MoMo/VietQR để thanh toán. Admin lên Gold trực tiếp trên tài khoản của bạn.',
+    a: 'Bạn nhập UserName Locket trên web, quét mã QR MoMo để thanh toán. Hệ thống tự lên Gold trên tài khoản của bạn.',
   },
   {
     q: 'Tôi thanh toán ở đâu?',
-    a: 'Thanh toán bằng MoMo, app ngân hàng hoặc VietQR/Napas 247 ngay trên website sau khi chọn gói. Có thể báo admin qua TikTok để được kích hoạt nhanh hơn.',
+    a: 'Thanh toán bằng MoMo hoặc VietQR/Napas 247 ngay trên website sau khi chọn gói. Không cần liên hệ thêm.',
   },
   {
     q: 'Gói linh hoạt năm tính phí thế nào?',
@@ -254,6 +254,6 @@ export const SUPPORT_FAQ = [
   },
   {
     q: 'Mất bao lâu để lên Gold?',
-    a: 'Thường từ vài giây đến 1 phút sau khi admin nhận UserName và xác nhận thanh toán.',
+    a: 'Thường từ vài giây đến 3 phút sau khi bạn xác nhận thanh toán trên web.',
   },
 ]

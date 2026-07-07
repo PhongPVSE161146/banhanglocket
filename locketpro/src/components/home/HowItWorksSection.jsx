@@ -12,7 +12,7 @@ export default function HowItWorksSection() {
       <Container maxWidth="lg">
         <SectionHeading
           title="Cách Hoạt Động"
-          subtitle="Chỉ 3 bước — gửi UserName qua TikTok và nhận Gold trực tiếp"
+          subtitle="Chỉ 3 bước — thanh toán MoMo và nhận Gold tự động"
         />
 
         <Row gutter={[32, 32]}>

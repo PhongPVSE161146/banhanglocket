@@ -1,0 +1,16 @@
+{
+  "payloads": [
+    {
+      "app_user_id": "PLACEHOLDER_UID",
+      "fetch_token": "YOUR_FETCH_TOKEN_HERE",
+      "product_id": "locket_gold",
+      "is_restore": true,
+      "attributes": {
+        "$attConsentStatus": {
+          "value": "authorized",
+          "updated_at_ms": 0
+        }
+      }
+    }
+  ]
+}

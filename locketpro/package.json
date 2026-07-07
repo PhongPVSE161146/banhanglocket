@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:api": "cd ../fixlocketgold/python && python3 app.py",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
