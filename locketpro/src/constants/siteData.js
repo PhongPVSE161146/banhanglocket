@@ -163,41 +163,75 @@ export const TESTIMONIALS = [
   },
 ]
 
+/** Cấu hình Ngân Hàng nhận thanh toán VietQR */
+export const BANK_DETAILS = {
+  bankId: 'MB', // MB Bank
+  accountNo: '03741161146', // Số tài khoản admin
+  accountName: 'PHAM VAN PHONG', // Chủ tài khoản
+  notePrefix: 'LKT', // Mã tiền tố chuyển khoản (ví dụ: LKT15, LKT120...)
+}
+
 /** Bảng giá theo dịch vụ nâng cấp trực tiếp */
-export const PRICING_PLANS = [
+export const PRICING_PLANS_PERSONAL = [
   {
-    id: 'monthly',
-    badge: 'Gói 1 tháng',
+    id: 'trai_nghiem',
+    badge: 'GÓI TRẢI NGHIỆM',
     price: '15.000',
+    priceNum: 15000,
     unit: 'đ',
-    period: '/ tháng',
-    popular: false,
-    features: ['Lên Gold trực tiếp qua UserName', 'Đủ tính năng Gold', 'Hỗ trợ TikTok 24/7'],
+    period: '/ 30 Ngày',
+    desc: 'Lên UserName',
+    features: ['Lên trực tiếp bằng UserName', 'Không đụng iCloud máy', 'Kích hoạt cực nhanh'],
   },
   {
-    id: 'yearly',
-    badge: 'Gói 1 năm',
+    id: 'mot_nam',
+    badge: 'GÓI 1 NĂM',
     price: '120.000',
+    priceNum: 120000,
     unit: 'đ',
-    period: '/ năm',
+    period: '/ Năm',
+    desc: 'Lên UserName',
     popular: true,
-    features: ['Tiết kiệm so với gói tháng', 'Lên Gold trực tiếp', 'Ưu tiên hỗ trợ'],
-  },
-  {
-    id: 'flex',
-    badge: 'Gói linh hoạt năm',
-    badgeSub: '(Tiết kiệm vốn ban đầu)',
-    price: '40.000',
-    unit: 'đ',
-    period: '/ năm đầu tiên (phí ban đầu)',
-    popular: false,
-    features: [
-      'Phí đăng ký 1 năm',
-      'Miễn phí duy trì tháng đầu',
-      'Phí duy trì: 10.000 đ / tháng (từ tháng 2)',
-    ],
+    features: ['Lên trực tiếp bằng UserName', 'Tiết kiệm chi phí', 'Bảo hành suốt quá trình sử dụng'],
   },
 ]
+
+export const PRICING_PLANS_GROUP = [
+  {
+    id: 'cap_doi',
+    badge: 'GÓI CẶP ĐÔI',
+    price: '202.000',
+    priceNum: 202000,
+    unit: 'đ',
+    period: '/ Năm',
+    desc: 'Dành cho 2 tài khoản',
+    icon: 'couple',
+    features: ['Nâng cấp cho 2 tài khoản', 'Dành riêng cho các cặp đôi', 'Hoạt động độc lập, ổn định'],
+  },
+  {
+    id: 'gia_dinh',
+    badge: 'GÓI GIA ĐÌNH',
+    price: '280.000',
+    priceNum: 280000,
+    unit: 'đ',
+    period: '/ Năm',
+    desc: 'Tối đa 3 thành viên',
+    icon: 'family',
+    features: ['Nâng cấp cho 3 tài khoản', 'Tối ưu chi phí gia đình', 'Bảo hành đầy đủ'],
+  },
+  {
+    id: 'sieu_cap',
+    badge: 'GÓI SIÊU CẤP',
+    price: '450.000',
+    priceNum: 450000,
+    unit: 'đ',
+    period: '/ Năm',
+    desc: 'Dành cho 5 thành viên',
+    icon: 'crown',
+    features: ['Nâng cấp cho 5 tài khoản', 'Tiết kiệm chi phí tối đa', 'Hỗ trợ kỹ thuật 24/7'],
+  },
+]
+
 
 export const PRICING_COMMITMENT = {
   title: 'Cam kết "Nói 3 Không"!',
